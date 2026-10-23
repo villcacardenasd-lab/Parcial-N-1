@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <title>Promedio de Notas</title>
+</head>
+<body>
+
+    <header>
+        <h1>Calcular Promedio</h1>
+    </header>
+
+    <main>
+        <form id="formulario">
+            <label>Primera nota:</label>
+            <input type="number" id="nota1" min="0" max="100" required>
+
+            <br><br>
+
+            <label>Segunda nota:</label>
+            <input type="number" id="nota2" min="0" max="100" required>
+
+            <br><br>
+
+            <label>Tercera nota:</label>
+            <input type="number" id="nota3" min="0" max="100" required>
+
+            <br><br>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <p id="resultado"></p>
+    </main>
+
+    <script>
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let n1 = Number(document.getElementById("nota1").value);
+            let n2 = Number(document.getElementById("nota2").value);
+            let n3 = Number(document.getElementById("nota3").value);
+
+            if (n1 < 0 || n1 > 100 ||
+                n2 < 0 || n2 > 100 ||
+                n3 < 0 || n3 > 100) {
+                document.getElementById("resultado").textContent =
+                    "Notas inválidas";
+                return;
+            }
+
+            let promedio = (n1 + n2 + n3) / 3;
+            let estado;
+
+            if (promedio >= 51) {
+                estado = "Aprobado";
+            } else {
+                estado = "Reprobado";
+            }
+
+            document.getElementById("resultado").textContent =
+                "Promedio: " + promedio.toFixed(2) +
+                " - " + estado;
+        });
+    </script>
+
+</body>
+</html>
