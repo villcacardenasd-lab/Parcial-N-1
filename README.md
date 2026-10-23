@@ -1,1 +1,0 @@
-# Parcial-N-1
